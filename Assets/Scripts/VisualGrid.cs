@@ -35,12 +35,13 @@ public class VisualGrid : MonoBehaviour {
         Camera.main.orthographicSize = grid.GetLength(0)/2 + 1;
         int rowCounter = 0;
         int colCounter = 1;
-        for (int i = 0; i < grid.GetLength(0); i++)
+        for (int i = grid.GetLength(0) -1; i >= 0; i--)
         {
-            Variables.setRowPoints(i, Camera.main.orthographicSize - .5f + rowCounter);
-            for (int j = 0; j < grid.GetLength(1); j++)
+            Main.setRowPoints(i, Camera.main.orthographicSize - .5f + rowCounter);
+
+            for (int j = grid.GetLength(1) -1; j >= 0; j--)
             {
-                Variables.setColPoints(j, -(Camera.main.orthographicSize + .5f) + colCounter);
+                Main.setColPoints(j, -(Camera.main.orthographicSize + .5f) + colCounter);
                 if (grid[i, j] == 1)
                 {
                     Instantiate(basin, new Vector2((Camera.main.orthographicSize - .5f) + rowCounter,-(Camera.main.orthographicSize + .5f) + colCounter), Quaternion.identity);

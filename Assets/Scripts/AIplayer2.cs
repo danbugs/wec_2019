@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIplayer : MonoBehaviour {
-    [SerializeField]
-    GameObject click;
+public class AIplayer2 : MonoBehaviour
+{
     static int[,] grid = GameGrid.grid;
     static int[,] basinCalculations = GameGrid.basinCalculations;
     static int[,] location = new int[grid.GetLength(0), grid.GetLength(1)];
@@ -16,31 +15,34 @@ public class AIplayer : MonoBehaviour {
     int valueGB;
     static bool gameOver = false;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         spot = Random.Range(0, basins * basins - 1);
         row = (int)(spot / basins);
         col = spot % basins;
-        Debug.Log(row + " " + col);
+        Debug.Log("First location: "+row + " " + col);
         location[row, col] = 1;
-        if(Variables.getIsSimulation())
+        if (Variables.getIsSimulation())
         {
             play(row, col);
         }
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
-    void play(int urow, int ucol){
+    void Update()
+    {
+
+    }
+    void play(int urow, int ucol)
+    {
         float[] positionHit = new float[2];
         positionHit[0] = Main.getRowPoints(urow);
         positionHit[1] = Main.getColPoints(ucol);
-        Instantiate(click, new Vector2(positionHit[0], positionHit[1]), Quaternion.identity);
         valueGo = grid[urow, ucol];
         valueGB = basinCalculations[urow, ucol];
         Debug.Log(valueGB);
-        if(valueGo == 1){
+        if (valueGo == 1)
+        {
             Debug.Log(urow + " " + ucol);
             Debug.Log("game over");
             gameOver = true;
@@ -58,8 +60,9 @@ public class AIplayer : MonoBehaviour {
         }
 
     }
-    void goodNum(int urow, int ucol){
-       
+    void goodNum(int urow, int ucol)
+    {
+
         int Nrow = 0;
         int Ncol = 0;
         bool done = false;
@@ -71,7 +74,8 @@ public class AIplayer : MonoBehaviour {
                 case 1:
                     Nrow = urow - 1;
                     Ncol = ucol;
-                    if(!cornerCheck(Nrow, Ncol, grid)){
+                    if (!cornerCheck(Nrow, Ncol, grid))
+                    {
                         goodNum(urow, ucol);
                     }
                     location[row, col] = 1;
@@ -149,14 +153,20 @@ public class AIplayer : MonoBehaviour {
                     break;
 
             }
-            if(location[Nrow, Ncol] == 0){
-                done = true;
-                play(Nrow, Ncol);
+            Debug.Log("New location GN:" + Nrow + " " + Ncol);
+            if (cornerCheck(Nrow, Ncol, grid))
+            {
+                if (location[Nrow, Ncol] == 0)
+                {
+                    done = true;
+                    play(Nrow, Ncol);
+                }
             }
         }
 
     }
-    bool cornerCheck(int newrow, int newcol, int [,] array){
+    bool cornerCheck(int newrow, int newcol, int[,] array)
+    {
         bool valid = false;
         if (!(newrow >= array.GetLength(0)) && !(newcol >= array.GetLength(1)) && newrow >= 0 && newcol >= 0)
         {
@@ -182,7 +192,7 @@ public class AIplayer : MonoBehaviour {
             if (cornerCheck(urow, ucol, grid))
             {
                 coords = newSpot(location);
-            }        
+            }
         }
         else
         {
@@ -201,6 +211,7 @@ public class AIplayer : MonoBehaviour {
 
         coords[1, 1] = row;
         coords[1, 2] = col;
+        Debug.Log("New location BN:" + coords[1,1] + " "+coords[1,2]);
 
         return coords;
     }

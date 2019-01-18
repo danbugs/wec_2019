@@ -6,8 +6,7 @@ public static class Variables
 {
     public static int gridSize;
     public static bool isSimulation;
-    public static float[] row = new float[getGridSize()];
-    public static float[] col = new float[getGridSize()];
+    public static bool gridGenerated;
        
     public static int getGridSize()
     {
@@ -25,22 +24,12 @@ public static class Variables
     {
         isSimulation = input;
     }
-    public static float getRowPoints(int random)
-    {   
-        int index = (int)(random / gridSize);
-        return row[index];
-    }
-    public static void setRowPoints(int index, float r)
+    public static bool getGridGenerated()
     {
-        row[index] = r;
+        return gridGenerated;
     }
-    public static float getColPoints(int random)
+    public static void setGridGenerated(bool input)
     {
-        int index = random % gridSize;
-        return col[index];
-    }
-    public static void setColPoints(int index, float c)
-    {
-        col[index] = c;
+        gridGenerated = input;
     }
 }

@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameGrid : MonoBehaviour {
+public class GameGrid : MonoBehaviour
+{
     static int size = Variables.getGridSize();
-    public static int[,] grid = new int[size,size];
+    public static int[,] grid = new int[size, size];
     public static int[,] basinCalculations = new int[size, size];
 
-	// Use this for initialization
-	void Awake () {
-        Randomize(grid);
+    // Use this for initialization
+    void Awake()
+    {
+        if(!Variables.getGridGenerated())
+        {
+            Randomize(grid);
+        }
         Debug.Log("Setup Grid");
         for (int i = 0; i < grid.GetLength(0); i++)
         {
             Debug.Log("Row " + i);
             for (int j = 0; j < grid.GetLength(1); j++)
             {
-                Debug.Log(grid[i, j]);
+                Debug.Log("At " + i + "," + j + ": " + grid[i, j]);
             }
         }
 
