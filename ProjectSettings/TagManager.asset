@@ -7,6 +7,7 @@ TagManager:
   - Basin
   - Tile
   - Number
+  - Click
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Basin
   - Number
   - Hiding
-  - 
+  - Click
   - 
   - 
   - 
@@ -52,4 +53,7 @@ TagManager:
     locked: 0
   - name: Hiding
     uniqueID: 2274879363
+    locked: 0
+  - name: Click
+    uniqueID: 1271672985
     locked: 0

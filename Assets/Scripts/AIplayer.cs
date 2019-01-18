@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIplayer : MonoBehaviour {
+    [SerializeField]
+    GameObject click;
     static int[,] grid = GameGrid.grid;
     static int[,] basinCalculations = GameGrid.basinCalculations;
     static int[,] location = new int[grid.GetLength(0), grid.GetLength(1)];
@@ -18,7 +20,10 @@ public class AIplayer : MonoBehaviour {
         row = (int)(spot / basins);
         col = spot % basins;
         location[row, col] = 1;
-        play(row, col);
+        if(Variables.getIsSimulation())
+        {
+            play(row, col);
+        }
     }
 
     // Update is called once per frame
@@ -26,6 +31,10 @@ public class AIplayer : MonoBehaviour {
 		
 	}
     void play(int urow, int ucol){
+        float[] positionHit = new float[2];
+        positionHit[0] = Variables.getRowPoints(urow);
+        positionHit[1] = Variables.getColPoints(ucol);
+        Instantiate(click, new Vector2(positionHit[0], positionHit[1]), Quaternion.identity);
         value = basinCalculations[urow, ucol];
         if(value == 0){
             Debug.Log("game over");
@@ -44,7 +53,7 @@ public class AIplayer : MonoBehaviour {
         }
 
     }
-    void goodNum(int row, int col){
+    void goodNum(int urow, int ucol){
        
         int Nrow = 0;
         int Ncol = 0;
@@ -55,36 +64,36 @@ public class AIplayer : MonoBehaviour {
             switch (random)
             {
                 case 1:
-                    Nrow = row - 1;
-                    Ncol = col;
+                    Nrow = urow - 1;
+                    Ncol = ucol;
                     break;
                 case 2:
-                    Nrow = row - 1;
-                    Ncol = col + 1;
+                    Nrow = urow - 1;
+                    Ncol = ucol + 1;
                     break;
                 case 3:
-                    Nrow = row;
-                    Ncol = col + 1;
+                    Nrow = urow;
+                    Ncol = ucol + 1;
                     break;
                 case 4:
-                    Nrow = row + 1;
-                    Ncol = col + 1;
+                    Nrow = urow + 1;
+                    Ncol = ucol + 1;
                     break;
                 case 5:
-                    Nrow = row + 1;
-                    Ncol = col;
+                    Nrow = urow + 1;
+                    Ncol = ucol;
                     break;
                 case 6:
-                    Nrow = row + 1;
-                    Ncol = col - 1;
+                    Nrow = urow + 1;
+                    Ncol = ucol - 1;
                     break;
                 case 7:
-                    Nrow = row;
-                    Ncol = col - 1;
+                    Nrow = urow;
+                    Ncol = ucol - 1;
                     break;
                 case 8:
-                    Nrow = row - 1;
-                    Ncol = col - 1;
+                    Nrow = urow - 1;
+                    Ncol = ucol - 1;
                     break;
 
             }

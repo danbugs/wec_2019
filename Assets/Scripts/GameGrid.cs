@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameGrid : MonoBehaviour {
-    static int rows = 5;
-    static int cols = 5;
-    public static int[,] grid = new int[rows,cols];
-    public static int[,] basinCalculations = new int[rows, cols];
+    static int size = Variables.getGridSize();
+    public static int[,] grid = new int[size,size];
+    public static int[,] basinCalculations = new int[size, size];
 
 	// Use this for initialization
 	void Awake () {

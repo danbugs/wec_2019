@@ -16,14 +16,16 @@ public class Player : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if(gameObject.tag == "Tile")
+        if(!Variables.getIsSimulation())
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("You clicked on a number");
-        }
-            
+            if (gameObject.tag == "Tile")
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("You clicked on a number");
+            }    
+        }   
     }
 }
