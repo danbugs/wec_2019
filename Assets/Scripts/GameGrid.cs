@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid : MonoBehaviour {
-    private int[,] grid = new int[30,30];
-    private int[,] basinCalculations = new int[30, 30];
+public class GameGrid : MonoBehaviour {
+    static int rows = 20;
+    static int cols = 20;
+    public static int[,] grid = new int[rows,cols];
+    public static int[,] basinCalculations = new int[rows, cols];
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         Randomize(grid);
         Debug.Log("Setup Grid");
         for (int i = 0; i < grid.GetLength(0); i++)
