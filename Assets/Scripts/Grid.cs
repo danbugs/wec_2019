@@ -3,28 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid : MonoBehaviour {
-    private int[,] grid = new int[3,3];
-    private int[,] basinCalculations = new int[3, 3];
+    private int[,] grid = new int[30,30];
+    private int[,] basinCalculations = new int[30, 30];
 
 	// Use this for initialization
 	void Start () {
         Randomize(grid);
+        Debug.Log("Setup Grid");
         for (int i = 0; i < grid.GetLength(0); i++)
         {
-            Debug.Log("Printing Grid Arrangement");
+            Debug.Log("Row " + i);
             for (int j = 0; j < grid.GetLength(1); j++)
             {
                 Debug.Log(grid[i, j]);
             }
         }
+
+        Debug.Log("Check Basins");
         for (int i = 0; i < grid.GetLength(0); i++)
         {
-            Debug.Log("Printing Basins");
+            Debug.Log("Row " + i);
             for (int j = 0; j < grid.GetLength(1); j++)
             {
+                Debug.Log(Check(i, j, grid));
                 basinCalculations[i, j] = Check(i, j, grid);
             }
         }
+
+        int counter = 0;
+        for (int i = 0; i < grid.GetLength(0); i++)
+        {
+            
+            for (int j = 0; j < grid.GetLength(1); j++)
+            {
+                if(grid[i, j] == 1)
+                {
+                    counter++;
+                }
+            }
+        }
+
+        Debug.Log("Found " + counter + " basins");
 	}
 	
 	// Update is called once per frame
