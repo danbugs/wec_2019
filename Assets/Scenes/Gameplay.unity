@@ -235,6 +235,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 1854757942794382, guid: f7a736be10b7b44e8ba5ef2582560908, type: 2}
   basin: {fileID: 1900114231039938, guid: 9e2d35c02208441deb6b22d9a79896c6, type: 2}
+  num0: {fileID: 1632361714524126, guid: 6921e64d8677e4ee3af8f3226102feab, type: 2}
+  num1: {fileID: 1026082516856076, guid: 0b3a4fbdc674f43dda918f5ca67aa80d, type: 2}
+  num2: {fileID: 1846488197376992, guid: 034dd60eed90e40478e0f3512aba5736, type: 2}
+  num3: {fileID: 1931418574773320, guid: e093aeeb12fef443fb408edec92f04d9, type: 2}
+  num4: {fileID: 1493283218341160, guid: 9605e4690fdfd44ff8c7e697b6eeeea4, type: 2}
+  num5: {fileID: 1670108935023376, guid: 4c10c8c81b2714839ad70b27855df553, type: 2}
+  num6: {fileID: 1046618410760148, guid: ddb39c896c790449a925fa324c8ea281, type: 2}
+  num7: {fileID: 1620407186911216, guid: 6cc79a973f5504f88ab70d22d920803b, type: 2}
+  num8: {fileID: 1589933067003354, guid: db30588a3445f43aba22f9b3089f8d49, type: 2}
 --- !u!224 &618721692
 RectTransform:
   m_ObjectHideFlags: 0

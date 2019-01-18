@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameGrid : MonoBehaviour {
-    static int rows = 20;
-    static int cols = 20;
+    static int rows = 5;
+    static int cols = 5;
     public static int[,] grid = new int[rows,cols];
     public static int[,] basinCalculations = new int[rows, cols];
 
